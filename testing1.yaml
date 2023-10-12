@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testing
+spec:
+  containers:
+    - name: httpd-container
+      image: httpd
+  tolerations:
+    - key: type
+      operator: "Equal"
+      value: paper
+      effect: "NoSchedule"
+  nodeSelector:
+    kubernetes.io/hostname: workernode1.ashish.com
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testing2
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+  tolerations:
+    - key: type
+      operator: "Equal"
+      value: paper
+      effect: "NoSchedule"
+  nodeSelector:
+    kubernetes.io/hostname: workernode2.ashish.com
+

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywp
+  namespace: mywebsite
+spec:
+  replicas: 1
+  selector:
+         matchLabels:
+                 app: mywp
+  template:
+         metadata:
+                name: mywp
+                labels:
+                    app: mywp
+         spec:
+                containers:
+                      - name: container2
+                        image: wordpress
+                        envFrom:
+                           - configMapRef:
+                                  name: appwp

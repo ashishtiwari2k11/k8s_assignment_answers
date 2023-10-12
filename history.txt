@@ -1,0 +1,86 @@
+    1  hostname
+    2  apt-get update
+    3  # Add Docker's official GPG key:
+    4  sudo apt-get update
+    5  sudo apt-get install ca-certificates curl gnupg
+    6  sudo install -m 0755 -d /etc/apt/keyrings
+    7  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    8  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    9  # Add the repository to Apt sources:
+   10  echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   11    "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   12  sudo apt-get update
+   13  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   14  systemctl enable --now docker
+   15  ls
+   16  lsblk
+   17  pwd
+   18  lsblk
+   19  docker container run -d --name database -e MARIADB_ROOT_PASSWORD=redhat -e MARIADB_DATABASE=wordpress -e MARIADB_USER=gaurav -e MARIADB_PASSWORD=1234 mariadb 
+   20  docker container ls
+   21  docker exec -it wordpress mariadb -u root -p
+   22  docker container exec -it wordpress mariadb -u root -p
+   23  docker container exec -it database mariadb -u root -p
+   24  docker container exec -it database mariadb -u gaurav -p
+   25  sudo apt-get update
+   26  sudo apt-get install ca-certificates curl gnupg
+   27  sudo install -m 0755 -d /etc/apt/keyrings
+   28  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   29  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   30  echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   31    "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   32  sudo apt-get update
+   33  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+   34  apt-get update
+   35  echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   36    "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   37  systemctl enable --now docker
+   38  sudo apt-get update
+   39  sudo apt-get install -y apt-transport-https ca-certificates curl
+   40  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+   41  echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   42  sudo apt-get update
+   43  sudo apt-get install -y kubelet kubeadm kubectl
+   44  vim /etc/containerd/config.toml 
+   45  systemctl restart containerd
+   46  sudo apt-mark hold kubelet kubeadm kubectl
+   47  kubeadm init
+   48  vim .bashrc
+   49  export KUBECONFIG=/etc/kubernetes/admin.conf
+   50  curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml -O
+   51  kubectl apply -f calico.yaml
+   52  kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/nullkubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
+   53  kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
+   54  export KUBECONFIG=/etc/kubernetes/admin.conf
+   55  kubectl get pods
+   56  kubectl get nodes
+   57  kubectl create namespace myweb
+   58  kubectl get nm
+   59  kubectl get namespace
+   60  ls
+   61  vim deployment.yaml
+   62  kubectl apply -f deployment.yaml 
+   63  kubectl get pods 
+   64  kubectl get pods -n myweb
+   65  kubectl describe pods deployment-nginx-57694b5df7-85wwh -n myweb
+   66  kubectl get pods
+   67  kubectl get pods -n myweb
+   68  top
+   69  kubectl taint node workernode1.ashish.com type=paper:NoSchedule --dry-run=client -o yaml taint1.yaml
+   70  kubectl taint node workernode1.ashish.com type=paper:NoSchedule
+   71  kubectl taint node workernode2.ashish.com type=paper:NoSchedule
+   72  kubectl get taint
+   73  hostnamectl set-hostname master.ashish.com
+   74  bash
+   75  ls
+   76  mkdir ashish
+   77  mkdir /ashish
+   78  cp * /ashish/
+   79  cd /ashish/
+   80  ls
+   81  rm -rf calico.yaml 
+   82  ls
+   83  rm -rf bash 
+   84  ls
+   85  cp * /home/
+   86  history > history.txt
